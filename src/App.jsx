@@ -122,31 +122,26 @@ function Hero() {
       <Header />
       <div className="hero-grid">
         <div className="hero-copy">
-          <h1>DO THE WORK.<br /><span className="wide-line">SHOW THE WORK.</span></h1>
-          <p>
-            Carl is an open-source coding agent designed to understand the real objective, act through explicit capabilities, verify the result, and leave an inspectable record.
+          <p className="hero-kicker">// LOCAL-FIRST / OPEN SOURCE</p>
+          <h1>BUILT TO<br />EARN YOUR<br /><span className="wide-line">TRUST.</span></h1>
+          <p className="hero-description">
+            Carl is a local-first, open-source agent harness for disciplined software work. It understands the objective, acts within clear boundaries, verifies the result, and records what happened.
           </p>
           <div className="hero-actions">
             <a className="button button--primary" href={GITHUB_URL} target="_blank" rel="noreferrer">
               <span aria-hidden="true">&gt;_</span>
-              Follow the build
+              See the source
             </a>
             <a className="button button--ghost" href={CONTRACT_URL} target="_blank" rel="noreferrer">
               <span aria-hidden="true">&gt;_</span>
-              Read Carl&apos;s contract
+              Read the contract
             </a>
           </div>
         </div>
 
         <div className="hero-art" aria-label="Carl pixel agent logo">
-          <div className="pixel-debris pixel-debris--top" aria-hidden="true">
-            {Array.from({ length: 12 }, (_, index) => <i key={index} />)}
-          </div>
           <div className="logo-art">
             <img src="/assets/carl-logo.png" alt="Carl, a red-orange pixel agent" />
-          </div>
-          <div className="pixel-debris pixel-debris--bottom" aria-hidden="true">
-            {Array.from({ length: 15 }, (_, index) => <i key={index} />)}
           </div>
           <TaskRail />
         </div>

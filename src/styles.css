@@ -154,8 +154,9 @@ button {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(500px, 1.06fr);
-  align-items: start;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(28px, 3vw, 52px);
+  align-items: center;
   min-height: calc(100svh - 144px);
   padding: clamp(48px, 4.2vw, 64px) var(--page-gutter) 78px;
 }
@@ -177,16 +178,24 @@ button {
 }
 
 .hero h1 {
-  max-width: 700px;
-  font-size: clamp(5.2rem, 9vw, 9rem);
+  max-width: 720px;
+  font-size: clamp(4.7rem, 7.35vw, 7.45rem);
+}
+
+.hero-kicker {
+  margin: 0 0 18px;
+  color: var(--signal);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 .wide-line {
   white-space: nowrap;
 }
 
-.hero-copy > p {
-  max-width: 555px;
+.hero-description {
+  max-width: 590px;
   margin: 23px 0 0;
   color: #d1cec6;
   font-size: clamp(0.9rem, 1.2vw, 1.08rem);
@@ -232,15 +241,19 @@ button {
 .hero-art {
   position: relative;
   display: grid;
-  place-items: center;
-  min-height: 570px;
-  transform: translateX(-14px);
+  grid-template-columns: minmax(0, 500px) 116px;
+  gap: clamp(20px, 2vw, 32px);
+  align-items: center;
+  justify-content: end;
+  min-width: 0;
+  min-height: 540px;
 }
 
 .logo-art {
   position: relative;
   z-index: 2;
-  width: min(570px, 46vw);
+  width: 100%;
+  max-width: 500px;
   aspect-ratio: 1;
   overflow: hidden;
 }
@@ -255,16 +268,15 @@ button {
 }
 
 .task-rail {
-  position: absolute;
+  position: relative;
   z-index: 4;
-  top: 50%;
-  right: -4px;
   display: grid;
   gap: 34px;
+  align-self: center;
+  justify-self: stretch;
   margin: 0;
   padding: 0;
   list-style: none;
-  transform: translateY(-50%);
 }
 
 .task-rail::before {
@@ -304,55 +316,6 @@ button {
 
 .is-active .task-square {
   background: var(--signal);
-}
-
-.pixel-debris {
-  position: absolute;
-  z-index: 5;
-  display: grid;
-  grid-template-columns: repeat(5, 11px);
-  gap: 14px;
-  width: 112px;
-}
-
-.pixel-debris--top {
-  top: 70px;
-  right: 80px;
-  transform: rotate(-8deg);
-}
-
-.pixel-debris--bottom {
-  right: 80px;
-  bottom: 35px;
-  grid-template-columns: repeat(5, 9px);
-}
-
-.pixel-debris i {
-  width: 11px;
-  height: 11px;
-  background: var(--signal);
-  animation: pixel-float 3.4s steps(3, end) infinite alternate;
-}
-
-.pixel-debris i:nth-child(3n) {
-  background: var(--lemon);
-  animation-delay: -1.2s;
-}
-
-.pixel-debris i:nth-child(4n) {
-  background: var(--ink-soft);
-  animation-delay: -2.3s;
-}
-
-.pixel-debris i:nth-child(2),
-.pixel-debris i:nth-child(7),
-.pixel-debris i:nth-child(10) {
-  visibility: hidden;
-}
-
-@keyframes pixel-float {
-  from { transform: translate(0, 0); }
-  to { transform: translate(7px, -9px); }
 }
 
 .hero-tail {
@@ -810,11 +773,22 @@ button {
 
 @media (max-width: 1120px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 28px;
   }
 
-  .task-rail {
-    right: -25px;
+  .hero h1 {
+    font-size: clamp(4.4rem, 7.5vw, 6.2rem);
+  }
+
+  .hero-art {
+    grid-template-columns: minmax(0, 400px) 104px;
+    gap: 18px;
+  }
+
+  .task-rail li {
+    gap: 10px;
+    font-size: 0.65rem;
   }
 
   .workflow-layout {
@@ -831,6 +805,29 @@ button {
 
   .install-actions {
     max-width: 680px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding-top: 62px;
+  }
+
+  .hero h1 {
+    max-width: 820px;
+    font-size: clamp(5rem, 13vw, 7.6rem);
+  }
+
+  .hero-art {
+    grid-template-columns: minmax(0, 520px) 116px;
+    justify-content: center;
+    min-height: 530px;
+    margin-top: 40px;
+  }
+
+  .logo-art {
+    max-width: 520px;
   }
 }
 
@@ -893,29 +890,6 @@ button {
     display: none;
   }
 
-  .hero-grid {
-    grid-template-columns: 1fr;
-    padding-top: 62px;
-  }
-
-  .hero h1 {
-    font-size: clamp(5rem, 21vw, 8.8rem);
-  }
-
-  .hero-art {
-    min-height: 530px;
-    margin-top: 40px;
-    transform: none;
-  }
-
-  .logo-art {
-    width: min(580px, 86vw);
-  }
-
-  .task-rail {
-    right: 0;
-  }
-
   .workflow-layout {
     grid-template-columns: 1fr;
   }
@@ -954,44 +928,19 @@ button {
   }
 }
 
-@media (max-width: 560px) {
-  .wordmark {
-    font-size: 1rem;
-  }
-
-  .hero-grid {
-    padding-bottom: 88px;
-  }
-
-  .hero h1 {
-    font-size: clamp(4.3rem, 23.4vw, 7rem);
-  }
-
-  .hero-copy > p {
-    font-size: 0.85rem;
-  }
-
-  .hero-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .button {
-    width: 100%;
-  }
-
+@media (max-width: 700px) {
   .hero-art {
+    grid-template-columns: 1fr;
     min-height: 410px;
   }
 
   .task-rail {
-    top: auto;
+    position: absolute;
     right: 0;
     bottom: -5px;
     left: 0;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    transform: none;
   }
 
   .task-rail::before {
@@ -1008,9 +957,32 @@ button {
     gap: 8px;
     font-size: 0.58rem;
   }
+}
 
-  .pixel-debris {
-    display: none;
+@media (max-width: 560px) {
+  .wordmark {
+    font-size: 1rem;
+  }
+
+  .hero-grid {
+    padding-bottom: 88px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 18vw, 6.4rem);
+  }
+
+  .hero-description {
+    font-size: 0.85rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    width: 100%;
   }
 
   .hero-tail {
