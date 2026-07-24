@@ -5,31 +5,32 @@ const GITHUB_URL = "https://github.com/StephenBickel/carl-agent";
 const DOCS_URL = `${GITHUB_URL}/tree/main/docs`;
 const CHANGELOG_URL = `${GITHUB_URL}/blob/main/CHANGELOG.md`;
 const DESIGN_URL = `${GITHUB_URL}/blob/main/docs/superpowers/specs/2026-07-23-carl-top-tier-harness-design.md`;
+const CONTRACT_URL = `${GITHUB_URL}/blob/main/CARL.md`;
 
 const processRows = [
   {
     number: "01",
-    label: "Plan the turn",
-    transcript: ["> Frame the next turn", "✓ Context recalled", "→ Plan recorded"],
+    label: "Understand the objective",
+    transcript: ["> Find the real objective", "✓ Context read", "→ Success criteria recorded"],
   },
   {
     number: "02",
-    label: "Check the boundary",
-    transcript: ["> Evaluate the policy", "✓ Budget checked", "→ Boundary clear"],
+    label: "Propose the work",
+    transcript: ["> Plan a reversible path", "✓ Capabilities scoped", "→ Change preview ready"],
   },
   {
     number: "03",
-    label: "Act within bounds",
-    transcript: ["> Prepare the patch", "✓ Budget checked", "✓ Approval recorded", "✓ Workspace bounded", "→ Event log appended"],
+    label: "Act with permission",
+    transcript: ["> Apply the bounded change", "✓ Approval current", "✓ Workspace protected", "→ Tool result recorded"],
   },
   {
     number: "04",
-    label: "Replay the record",
-    transcript: ["> Rebuild the session", "✓ Checksums verified", "→ Record replayed"],
+    label: "Verify the result",
+    transcript: ["> Run the real checks", "✓ Outcome measured", "→ Evidence attached"],
   },
 ];
 
-const taskStates = ["PLAN", "APPROVE", "REPLAY"];
+const taskStates = ["UNDERSTAND", "ACT", "VERIFY"];
 
 function ArrowIcon() {
   return (
@@ -77,8 +78,8 @@ function Header() {
         <span />
       </button>
       <nav className={`site-nav ${open ? "site-nav--open" : ""}`} aria-label="Primary navigation">
-        <a href="#workflow" onClick={closeMenu}>Architecture</a>
-        <a href="#control" onClick={closeMenu}>Guardrails</a>
+        <a href="#workflow" onClick={closeMenu}>How it works</a>
+        <a href="#control" onClick={closeMenu}>Boundaries</a>
         <a href="#install" onClick={closeMenu}>Build</a>
       </nav>
       <a className="github-link" href={GITHUB_URL} target="_blank" rel="noreferrer">
@@ -121,18 +122,18 @@ function Hero() {
       <Header />
       <div className="hero-grid">
         <div className="hero-copy">
-          <h1>AN AGENT<br /><span className="wide-line">WITH PROOF.</span></h1>
+          <h1>DO THE WORK.<br /><span className="wide-line">SHOW THE WORK.</span></h1>
           <p>
-            Carl is a local-first Rust agent built around replayable events, explicit approvals, and interchangeable models.
+            Carl is an open-source coding agent designed to understand the real objective, act through explicit capabilities, verify the result, and leave an inspectable record.
           </p>
           <div className="hero-actions">
             <a className="button button--primary" href={GITHUB_URL} target="_blank" rel="noreferrer">
               <span aria-hidden="true">&gt;_</span>
-              Explore the code
+              Follow the build
             </a>
-            <a className="button button--ghost" href={DESIGN_URL} target="_blank" rel="noreferrer">
+            <a className="button button--ghost" href={CONTRACT_URL} target="_blank" rel="noreferrer">
               <span aria-hidden="true">&gt;_</span>
-              Read the design
+              Read Carl&apos;s contract
             </a>
           </div>
         </div>
@@ -151,7 +152,7 @@ function Hero() {
         </div>
       </div>
       <div className="hero-tail" aria-hidden="true">
-        <span>&gt;_ PRE-ALPHA / BUILT IN PUBLIC</span>
+        <span>&gt;_ OPEN SOURCE / PRE-ALPHA</span>
         <i />
         <div className="tail-pixels"><b /><b /><b /><b /></div>
       </div>
@@ -168,10 +169,10 @@ function Workflow() {
       <div className="corner-pixels corner-pixels--top" aria-hidden="true"><i /><i /><i /></div>
       <div className="workflow-layout">
         <div className="workflow-copy">
-          <p className="section-label">// EVENT-SOURCED BY DESIGN</p>
-          <h2>EVERY TURN<br /><span className="wide-line">IS REPLAYABLE.</span></h2>
+          <p className="section-label">// UNDERSTAND → ACT → VERIFY</p>
+          <h2>FROM OBJECTIVE<br /><span className="wide-line">TO EVIDENCE.</span></h2>
           <p className="section-intro">
-            Plans, approvals, tool calls, and outcomes belong to one replayable event stream. You can inspect how Carl reached the result.
+            Carl is designed to carry software work from what you meant to a verified result. Model calls, tool use, approvals, costs, failures, and checks stay inspectable.
           </p>
           <div className="process-list" role="list" aria-label="How Carl works">
             {processRows.map((row, index) => (
@@ -188,8 +189,8 @@ function Workflow() {
               </button>
             ))}
           </div>
-          <a className="text-link" href="#control">
-            Explore capabilities
+          <a className="text-link" href={DESIGN_URL} target="_blank" rel="noreferrer">
+            Read the architecture
             <ArrowIcon />
           </a>
         </div>
@@ -249,17 +250,17 @@ function ControlAndInstall() {
       <section className="control" id="control">
         <div className="ghost-c" aria-hidden="true">C</div>
         <div className="control-heading">
-          <h2>THE FINAL CALL<br />STAYS YOURS.</h2>
-          <p>Carl can draft and prepare.<br />Consequential actions cross an explicit approval boundary.</p>
+          <h2>MOVE FAST.<br />KNOW WHEN TO STOP.</h2>
+          <p>Carl keeps consequential actions previewable.<br />When the work needs new authority, credentials, or a real product decision, it stops and asks.</p>
         </div>
         <div className="permission-list">
           <PermissionRail
-            label="MOVES FAST"
-            items={["Read the workspace", "Recall context", "Draft changes"]}
+            label="WORKS LOCALLY"
+            items={["Read available context", "Prepare reversible changes", "Run verification"]}
           />
           <PermissionRail
-            label="STOPS & ASKS"
-            items={["Run commands", "Send messages", "Publish changes"]}
+            label="ASKS FIRST"
+            items={["Cross a boundary", "Use credentials", "Publish work"]}
             caution
           />
         </div>
@@ -267,7 +268,7 @@ function ControlAndInstall() {
 
       <section className="install" id="install">
         <div className="install-command">
-          <p>PRE-ALPHA — BUILD FROM SOURCE</p>
+          <p>PRE-ALPHA — FOLLOW THE BUILD</p>
           <code>{INSTALL_COMMAND}<span className="cursor" aria-hidden="true" /></code>
         </div>
         <div className="install-actions">
@@ -277,7 +278,7 @@ function ControlAndInstall() {
           </button>
           <a className="install-button" href={GITHUB_URL} target="_blank" rel="noreferrer">
             <span className="github-glyph" aria-hidden="true">●</span>
-            View on GitHub
+            View the repository
             <ArrowIcon />
           </a>
         </div>
@@ -295,7 +296,7 @@ function Footer() {
         <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
         <a href={CHANGELOG_URL} target="_blank" rel="noreferrer">Changelog</a>
       </nav>
-      <p>Rust core. Replayable state. Built in public.</p>
+      <p>Personal by origin. Open by design.</p>
     </footer>
   );
 }
