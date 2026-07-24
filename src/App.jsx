@@ -30,7 +30,7 @@ const processRows = [
   },
 ];
 
-const taskStates = ["UNDERSTAND", "ACT", "VERIFY"];
+const taskStates = ["CODE", "AUTOMATE", "CONTINUE"];
 
 function ArrowIcon() {
   return (
@@ -122,10 +122,10 @@ function Hero() {
       <Header />
       <div className="hero-grid">
         <div className="hero-copy">
-          <p className="hero-kicker">// LOCAL-FIRST / OPEN SOURCE</p>
-          <h1>BUILT TO<br />EARN YOUR<br /><span className="wide-line">TRUST.</span></h1>
+          <p className="hero-kicker">// PERSONAL AGENT / OPEN SOURCE</p>
+          <h1>ONE AGENT<br />FOR YOUR CODE<br /><span className="wide-line">AND YOUR DAY.</span></h1>
           <p className="hero-description">
-            Carl is a local-first, open-source agent harness for disciplined software work. It understands the objective, acts within clear boundaries, verifies the result, and records what happened.
+            Carl is a local-first personal automation assistant and open-source coding harness—designed to carry one continuous context across your terminal, tools, and conversations.
           </p>
           <div className="hero-actions">
             <a className="button button--primary" href={GITHUB_URL} target="_blank" rel="noreferrer">
